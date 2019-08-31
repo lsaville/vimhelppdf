@@ -1,8 +1,5 @@
 define TASKS
 letter  make letter-sized version
-a4      make a4-sized version
-ipad    make ipad-sized version
-all     make all versions
 update  update vim help and vim-faq from repository
 clean   delete intermediate files
 clobber delete all files
@@ -15,9 +12,6 @@ docdir = doc
 helpfiles = $(wildcard $(docdir)/*.txt)
 
 letter: vimhelp.pdf
-a4: vimhelp-a4.pdf
-ipad: vimhelp-ipad.pdf
-all: letter a4 ipad
 
 update:
 	./update.sh
@@ -28,7 +22,10 @@ $(docdir):
 %.pdf: %.tex body.tex FORCE
 	xelatex $<
 
-body.tex: $(helpfiles) $(docdir) contents.txt
+#body.tex: $(helpfiles) $(docdir) contents.txt
+#	python h2h.py
+
+body.tex: $(helpfiles) $(docdir) user-manual.txt
 	python h2h.py
 
 clean:
@@ -41,4 +38,4 @@ clobber: clean
 help:
 	@echo "$$TASKS"
 
-.PHONY: letter a4 ipad all update help clean clobber FORCE
+.PHONY: letter update help clean clobber FORCE
