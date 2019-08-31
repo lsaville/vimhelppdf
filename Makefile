@@ -15,7 +15,7 @@ docdir = doc
 helpfiles = $(wildcard $(docdir)/*.txt)
 
 letter: vimhelp.pdf
-a3: vimhelp-a4.pdf
+a4: vimhelp-a4.pdf
 ipad: vimhelp-ipad.pdf
 all: letter a4 ipad
 
