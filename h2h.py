@@ -36,7 +36,7 @@ def main():
     h2h = VimH2H(slurp('doc/tags'))
     h2h.add_tags(slurp('doc/vim_faq.txt'))
 
-    contents = slurp('contents.txt').split('\n')
+    contents = slurp('user-manual.txt').split('\n')
     fout = codecs.open('body.tex', 'w', 'utf-8')
 
     level = "chapter"
